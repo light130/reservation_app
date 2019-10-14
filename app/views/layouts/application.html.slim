@@ -7,7 +7,34 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
   body
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand href="/"  予約アプリ
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link href="#"
+              | 機能説明
+              span.sr-only (current)
+        ul.navbar-nav
+          - if user_signed_in?
+            li.nav-item.active
+              = current_user.name
+            li.nav-item.active
+              = link_to destroy_user_session_path, method: :delete, class: "nav-link" do
+                | ログアウト
+                span.sr-only (current)
+          - else
+            li.nav-item.active
+              = link_to new_user_session_path, class: "nav-link" do
+                | ログイン
+                span.sr-only (current)
+            li.nav-item.active
+              = link_to new_user_registration_path, class: "nav-link" do
+                | 登録
+                span.sr-only (current)
     p.notice = notice.presence
     p.alert = alert.presence
-    = yield
+    div.container = yield
