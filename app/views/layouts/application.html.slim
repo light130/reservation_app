@@ -14,14 +14,15 @@ html
       a.navbar-brand href="/"  予約アプリ
       #navbarSupportedContent.collapse.navbar-collapse
         ul.navbar-nav.mr-auto
-          li.nav-item
-            a.nav-link href="#"
-              | 機能説明
-              span.sr-only (current)
+          - if user_signed_in?
+            li.nav-item
+                | ようこそ #{current_user.name}さん！
+                span.sr-only (current)
         ul.navbar-nav
           - if user_signed_in?
             li.nav-item.active
-              = current_user.name
+              = link_to "#", class: "nav-link" do
+                | 予約確認
             li.nav-item.active
               = link_to destroy_user_session_path, method: :delete, class: "nav-link" do
                 | ログアウト
