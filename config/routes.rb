@@ -5,5 +5,9 @@ Rails.application.routes.draw do
      passwords: 'users/passwords',
      registrations: 'users/registrations'
    }
-   resources :reservations
+   resources :reservations do
+     member do
+       get 'confirmation'
+     end
+   end
 end
