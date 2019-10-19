@@ -37,5 +37,8 @@ html
                 | 登録
                 span.sr-only (current)
     p.notice = notice.presence
+    - if flash[:errors].present?
+          - flash[:errors].each do |messages|
+            = messages
     p.alert = alert.presence
     div.container = yield
