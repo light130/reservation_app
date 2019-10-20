@@ -21,7 +21,7 @@ html
         ul.navbar-nav
           - if user_signed_in?
             li.nav-item.active
-              = link_to "#", class: "nav-link" do
+              = link_to reservations_path, class: "nav-link" do
                 | 予約確認
             li.nav-item.active
               = link_to destroy_user_session_path, method: :delete, class: "nav-link" do
@@ -37,8 +37,8 @@ html
                 | 登録
                 span.sr-only (current)
     p.notice = notice.presence
-    - if flash[:errors].present?
-          - flash[:errors].each do |messages|
+    - if flash[:info].present?
+          - flash[:info].each do |messages|
             = messages
     p.alert = alert.presence
     div.container = yield
