@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   def new
     @reservations = Reservation.all
     @reserved_schedule_ids = @reservations.select("schedule_id")
-    @schedule_available = Schedule.where.not(id: @reserved_schedule_ids)
+    @schedule_available = Schedule.where.not(id: @reserved_schedule_ids).where('start > ?', Time.zone.now)
   end
 
   def create
@@ -21,7 +21,7 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.where(user_id: current_user.id)
     @reserved_schedule_ids = @reservations.select("schedule_id")
-    @schedules = Schedule.where(id: @reserved_schedule_ids)
+    @schedules = Schedule.where(id: @reserved_schedule_ids).where('close > ?', Time.zone.now)
   end
 
   def show
