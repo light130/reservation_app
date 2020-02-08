@@ -3,3 +3,4 @@ ul
   - @schedule_available.each_with_index do |schedule, i|
     li = link_to confirmation_reservation_path(schedule) do
       | #{schedule.start.strftime("%Y年%m月%d日%H時")} ~ #{schedule.close.strftime("%Y年%m月%d日%H時")}
+    - break if i == 4
