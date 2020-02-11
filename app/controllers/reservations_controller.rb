@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!, only: %i[confirmation create index show destroy]
+  before_action :authenticate_user!
 
   def new
     @reservations = Reservation.all
@@ -11,10 +11,9 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(schedule_id: params[:schedule_id], user_id: params[:user_id])
     if @reservation.save
       flash[:info] = ['予約を完了しました。']
-      redirect_to root_url
+      redirect_to root_path
     else
-      flash[:info] = ['予約を完了できませんでした。']
-      redirect_to root_url
+      render new_reservation_path
     end
   end
 
@@ -32,7 +31,7 @@ class ReservationsController < ApplicationController
   def destroy
     Reservation.find(params[:id]).destroy
     flash[:info] = ['予約を取り消しました。']
-    redirect_to root_url
+    redirect_to root_path
   end
 
   def confirmation
