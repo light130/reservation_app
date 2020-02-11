@@ -1,3 +1,7 @@
+if reservation.errors.present?
+  ul#error_explanation
+  - reservation.errors.full_messages.each do |message|
+    li = message
 h2 空いている日時
 ul
   - @schedule_available.each_with_index do |schedule, i|

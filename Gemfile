@@ -24,11 +24,13 @@ gem 'webpacker', '~> 4.0'
 group :development, :test do
   gem 'byebug'
   gem 'factory_bot_rails'
+  gem 'rails_best_practices'
   gem 'rubocop', require: false
 end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'solargraph'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen', '~> 2.0.0'

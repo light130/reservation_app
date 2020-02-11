@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :phone_number, presence: true
+  validates :phone_number, presence: true, format: {with: /\A\d{10}$|^\d{11}\z/}
 end
