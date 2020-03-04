@@ -169,7 +169,7 @@ GEM
     parser (2.7.0.2)
       ast (~> 2.4.0)
     public_suffix (4.0.3)
-    puma (3.12.2)
+    puma (3.12.4)
     rack (2.1.2)
     rack-pjax (1.1.0)
       nokogiri (~> 1.5)
@@ -382,7 +382,7 @@ DEPENDENCIES
   launchy
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4)
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 6.0.0)
   rails_admin
   rails_best_practices
